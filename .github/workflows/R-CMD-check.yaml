@@ -29,6 +29,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
+      HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: false
 
     steps:
       - uses: actions/checkout@v4
@@ -40,8 +41,6 @@ jobs:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
-        env:
-          HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: false
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
